@@ -35,6 +35,7 @@
 
 #include "cutils.h"
 #include "quickjs-libc.h"
+#include "quickjs-ffi/quickjs-ffi.h"
 
 typedef struct {
     char *name;
@@ -512,6 +513,9 @@ int main(int argc, char **argv)
     /* add system modules */
     namelist_add(&cmodule_list, "std", "std", 0);
     namelist_add(&cmodule_list, "os", "os", 0);
+
+    /* Add custom modules */
+    namelist_add(&cmodule_list, "ffi", "ffi", 0);
 
     for(;;) {
         c = getopt(argc, argv, "ho:cN:f:mxevM:p:S:D:");
